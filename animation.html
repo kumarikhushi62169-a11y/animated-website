@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Animated Simple Website</title>
+  <style>
+    /* Basic Styling */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  color: white;
+  background: linear-gradient(120deg, #7f00ff, #e100ff);
+  min-height: 100vh;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+/* Header */
+header {
+  padding: 80px 20px 40px;
+  animation: slideDown 1.2s ease;
+}
+header h1 {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+}
+header p {
+  font-size: 1.2em;
+  color: #ffe6ff;
+}
+
+/* Section */
+section {
+  padding: 60px 20px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+.content h2,
+.contact h2 {
+  margin-bottom: 20px;
+  font-size: 1.8em;
+  color: #fff8f8;
+}
+
+/* Glow Button */
+.glow-btn {
+  display: inline-block;
+  background: #ff00c8;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 30px;
+  margin-top: 20px;
+  text-decoration: none;
+  box-shadow: 0 0 10px #ff00c8, 0 0 40px #ff00c8;
+  transition: 0.4s;
+}
+.glow-btn:hover {
+  background: #fff;
+  color: #ff00c8;
+  box-shadow: 0 0 20px #fff, 0 0 50px #fff;
+}
+
+/* Contact Form */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+input,
+textarea {
+  width: 80%;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  resize: none;
+}
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 25px;
+  background: #00ffd1;
+  color: #111;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.4s;
+}
+button:hover {
+  background: #fff;
+  color: #00ffd1;
+  box-shadow: 0 0 20px #00ffd1;
+}
+
+/* Footer */
+footer {
+  background: rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  font-size: 0.9em;
+}
+
+/* Fade-in Animation */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1.2s forwards;
+}
+.delay { animation-delay: 0.4s; }
+.delay2 { animation-delay: 0.8s; }
+.delay3 { animation-delay: 1.2s; }
+.delay4 { animation-delay: 1.6s; }
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Header Slide */
+@keyframes slideDown {
+  from { transform: translateY(-50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1 class="fade-in">✨ Welcome to My Animated Website ✨</h1>
+    <p class="fade-in delay">Beautiful | Simple | Animated</p>
+  </header>
+
+  <section class="content fade-in delay2">
+    <h2>About Us</h2>
+    <p>
+      This is a simple and beautiful animated website using pure HTML, CSS, and JavaScript.
+      It has smooth fade-in effects, hover animations, and a glowing button.
+    </p>
+    <a href="#contact" class="glow-btn">Get Started</a>
+  </section>
+
+  <section id="contact" class="contact fade-in delay3">
+    <h2>Contact Us</h2>
+    <form>
+      <input type="text" placeholder="Your Name" required />
+      <input type="email" placeholder="Your Email" required />
+      <textarea placeholder="Message" rows="4" required></textarea>
+      <button type="submit">Send</button>
+    </form>
+  </section>
+
+  <footer class="fade-in delay4">
+    <p>© <span id="year"></span> My Animated Website  💖</p>
+  </footer>
+
+  <script>
+    // Show current year
+document.getElementById("year").textContent = new Date().getFullYear();
+
+// Smooth scroll animation
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener("click", function (e) {
+    e.preventDefault();
+    document.querySelector(this.getAttribute("href")).scrollIntoView({
+      behavior: "smooth"
+    });
+  });
+});
+
+  </script>
+</body>
+</html>
